@@ -1,13 +1,23 @@
 {
   "todo": [
     {
-      "id": "fafb",
-      "task": "Dormir",
+      "id": "0",
+      "task": "Eating breakfast",
       "completed": "false"
     },
     {
-      "id": "d6b8",
-      "task": "Manger encore une fois",
+      "id": "1",
+      "task": "Doing homework",
+      "completed": "false"
+    },
+    {
+      "id": "2",
+      "task": "Go to the market",
+      "completed": "false"
+    },
+    {
+      "id": "fcf1",
+      "task": "Run",
       "completed": "false"
     }
   ]

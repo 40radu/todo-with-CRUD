@@ -16,33 +16,36 @@ function App() {
   }
 
   function postData() {
-    post(task);
-    setTask("");
-    const inputt = document.querySelector("input")
-    inputt.value = "";
+    if (task !== "") {
+      post(task);
+      setTask("");
+      const inputt = document.querySelector("input")
+      inputt.value = "";
 
-    manageGetData();
+      manageGetData();
+    }
+
   }
   //Delete test 
   function deleteData(id, completed) {
 
     if (completed == "true") {
-      const confirmationDelete = prompt ("Voulez vous vraiment supprimer ? Si oui, veuillez ecrire oui, si non, veuillez cliquer sur le bouton Cancel")
+      const confirmationDelete = prompt("Voulez vous vraiment supprimer ? Si oui, veuillez ecrire oui, si non, veuillez cliquer sur le bouton Cancel")
 
-      if( confirmationDelete === "oui") {
+      if (confirmationDelete === "oui") {
         const deleteFetch = fetch(`http://localhost:3000/todo/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json"
           }
         })
-  
+
         setListTask(listTask.filter(todo => todo.id !== id))
       }
 
-      
+
     } else {
-        alert ("Unfinished task")
+      alert("Unfinished task")
     }
 
   }
@@ -102,18 +105,23 @@ function App() {
 
   return (
     <>
-      <h1>List tasks</h1>
-      <input type="text" placeholder='Enter your task ...' onChange={inputHandleChange} />
-      <button onClick={postData}>Add</button>
-      <ul>
-        {
-          listTask.map((element, index) => {
-            return <List data={element} key={index} deleteTodo={deleteData} updateTodo={update} />
-          })
-        }
-        {/* <List data = {listTask}/> */}
+      <section className='container'>
+        <h1>List tasks</h1>
+        <div className="container__addTask">
 
-      </ul>
+          <input type="text" placeholder='Enter your task ...' onChange={inputHandleChange} className='container__addTask__inputTask' />
+          <button onClick={postData} className='container__addTask__btn-add'>Add to tasks</button>
+        </div>
+        <ul>
+          {
+            listTask.map((element, index) => {
+              return <List data={element} key={index} deleteTodo={deleteData} updateTodo={update} />
+            })
+          }
+          {/* <List data = {listTask}/> */}
+
+        </ul>
+      </section>
     </>
   )
 }

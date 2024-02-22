@@ -64,9 +64,9 @@ function List(props) {
 
     return (
         <>
-            {<li>
-                {dataList.completed == "true"? <input type="checkbox" checked onChange={()=> props.updateTodo(dataList.id,dataList.completed)} /> : <input type="checkbox" onChange={()=> props.updateTodo(dataList.id,dataList.completed)} />}
-                <p>{dataList.task}</p>
+            {<li className="taskLists">
+                {dataList.completed == "true"? <input className="checkbox" type="checkbox" checked onChange={()=> props.updateTodo(dataList.id,dataList.completed)} /> : <input type="checkbox" className="checkbox" onChange={()=> props.updateTodo(dataList.id,dataList.completed)} />}
+                <p className="descri">{dataList.task}</p>
                 <button onClick={() => props.deleteTodo(dataList.id, dataList.completed)}>Remove</button>
             </li>}
             {/* {datasList.map((element, index) => {
